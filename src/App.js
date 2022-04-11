@@ -11,6 +11,15 @@ function App() {
     setIsAuth(isAuth)
   }
 
+  const user = {
+    name: "Ross",
+    surname: "Max",
+    age: 26
+}
+
+const firstNameChar = user.name.substring(0, 1).toUpperCase();
+const firstSurnameChar = user.surname.substring(0, 1).toUpperCase();
+
   return (
     <div>
       <Routes>
@@ -28,6 +37,8 @@ function App() {
             <HomePage
               isAuth={isAuth}
               onChangeAuth={onChangeAuth}
+              firstNameChar={firstNameChar}
+              firstSurnameChar={firstSurnameChar}
             ></HomePage>
           }>
         </Route>

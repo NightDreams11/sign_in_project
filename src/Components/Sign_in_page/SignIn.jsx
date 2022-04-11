@@ -12,11 +12,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 const SignIn = (props) => {
 
-    const user = {
-        name: "Ross",
-        surname: "Max",
-        age: 26
-    }
+
 
     const [isPasswordHidden, setIsPasswordHidden] = useState(true);
     const [email, setEmail] = useState('');
@@ -24,8 +20,6 @@ const SignIn = (props) => {
     const [password, setPassword] = useState('');
     const [isDirtyPassword, setIsDirtyPassword] = useState(false);
 
-    const firstNameChar = user.name.substring(0, 1).toUpperCase();
-    const firstSurnameChar = user.surname.substring(0, 1).toUpperCase();
 
     let isEmailError = emailIsValid(email)
     let isPasswordError = passwordIsValid(password)
@@ -71,7 +65,7 @@ const SignIn = (props) => {
     const action = (
         <React.Fragment>
             <Button color="secondary" size="small" onClick={handleClose}>
-                UNDO
+                Close
             </Button>
             <IconButton
                 size="small"
@@ -147,7 +141,7 @@ const SignIn = (props) => {
                 open={open}
                 autoHideDuration={6000}
                 onClose={handleClose}
-                message="Note archived"
+                message="Wrong login or password"
                 action={action}
             />
                 </form>
