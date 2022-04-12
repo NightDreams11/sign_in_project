@@ -5,19 +5,13 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
 export default function SimpleSnackbar(props) {
-    const [open, setOpen] = React.useState(false);
-
-
-    const handleClick = () => {
-        setOpen(true);
-    };
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;
         }
 
-        setOpen(false);
+        props.setOpen(false);
     };
 
     const action = (
@@ -38,12 +32,11 @@ export default function SimpleSnackbar(props) {
 
     return (
         <div>
-            {/* <Button onClick={handleClick}>Open simple snackbar</Button> */}
             <Snackbar
-                open={open}
+                open={props.open}
                 autoHideDuration={6000}
                 onClose={handleClose}
-                message="Note archived"
+                message="Wrong login or password"
                 action={action}
             />
         </div>

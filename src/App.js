@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Component_404 from './Components/404/404';
 import HomePage from './Components/Home_Page/HomePage';
 import SignIn from './Components/Sign_in_page/SignIn';
 
@@ -15,10 +16,10 @@ function App() {
     name: "Ross",
     surname: "Max",
     age: 26
-}
+  }
 
-const firstNameChar = user.name.substring(0, 1).toUpperCase();
-const firstSurnameChar = user.surname.substring(0, 1).toUpperCase();
+  const firstNameChar = user.name.substring(0, 1).toUpperCase();
+  const firstSurnameChar = user.surname.substring(0, 1).toUpperCase();
 
   return (
     <div>
@@ -29,7 +30,8 @@ const firstSurnameChar = user.surname.substring(0, 1).toUpperCase();
             <SignIn
               onChangeAuth={onChangeAuth}
               isAuth={isAuth}
-            ></SignIn>}>
+            ></SignIn>
+          }>
         </Route>
         <Route
           path='/home'
@@ -42,6 +44,10 @@ const firstSurnameChar = user.surname.substring(0, 1).toUpperCase();
             ></HomePage>
           }>
         </Route>
+        <Route
+          path='/'
+          element={<Component_404></Component_404>}
+        ></Route>
       </Routes>
     </div>
   )

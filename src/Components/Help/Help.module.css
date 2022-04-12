@@ -1,0 +1,34 @@
+.container {
+    position: absolute;
+    top: -30px;
+    right: 0px;
+    color: #838b8d;
+    outline: none;
+    background: rgba(0, 0, 0, 0.09);
+    border-radius: 4px 4px 0px 0px;
+    border: none;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.7s;
+}
+
+.container_hidden {
+    position: absolute;
+    top: -30px;
+    right: 0px;
+    color: #838b8d;
+    outline: none;
+    background: rgba(0, 0, 0, 0.09);
+    border-radius: 4px 4px 0px 0px;
+    border: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.text {
+    font-size: 12px;
+    line-height: 12px;
+    text-align-last: left;
+    font-family: 'Roboto', sans-serif;
+}

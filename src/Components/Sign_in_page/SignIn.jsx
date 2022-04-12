@@ -6,27 +6,32 @@ import icon from "../../images/icon.svg"
 import icon_slash from "../../images/icon_slash.svg"
 import { emailIsValid, passwordIsValid } from "../../validators/validators";
 import { Navigate } from 'react-router-dom';
-import { Button, IconButton, Snackbar } from "@mui/material";
-import CloseIcon from '@mui/icons-material/Close';
+import SimpleSnackbar from '../Snackbar_MUI/Snackbar'
+import Help from "../Help/Help";
 
 
 const SignIn = (props) => {
-
-
 
     const [isPasswordHidden, setIsPasswordHidden] = useState(true);
     const [email, setEmail] = useState('');
     const [isDirtyEmail, setIsDirtyEmail] = useState(false);
     const [password, setPassword] = useState('');
     const [isDirtyPassword, setIsDirtyPassword] = useState(false);
+    const [open, setOpen] = React.useState(false);
+    const [openHelp, setOpenHelp] = useState(false);
 
 
     let isEmailError = emailIsValid(email)
     let isPasswordError = passwordIsValid(password)
 
     let isDisabledButton = true;
+
     if ((isEmailError || isPasswordError) === false) {
         isDisabledButton = false;
+    }
+
+    const isHelp = (value) => {
+        setOpenHelp(value)
     }
 
     const onSubmit = (data) => {
@@ -34,9 +39,9 @@ const SignIn = (props) => {
         //Чтобы данный метод отработал, полям нужно указать параметр name
         const formData = new FormData(data.target);
         let newData = Object.fromEntries(formData.entries());
-        console.log(Object.fromEntries(formData.entries()))
+        // console.log(Object.fromEntries(formData.entries()))
 
-        if (newData.email === "rost090909@gmail.com" && newData.password === "12345") {
+        if (newData.email === "example@example.com" && newData.password === "12345") {
             props.onChangeAuth(true);
         }
 
@@ -46,37 +51,6 @@ const SignIn = (props) => {
         setPassword('');
         setIsDirtyPassword(false);
     }
-
-    const [open, setOpen] = React.useState(false);
-
-
-    const handleClick = () => {
-        setOpen(true);
-    };
-
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-
-        setOpen(false);
-    };
-
-    const action = (
-        <React.Fragment>
-            <Button color="secondary" size="small" onClick={handleClose}>
-                Close
-            </Button>
-            <IconButton
-                size="small"
-                aria-label="close"
-                color="inherit"
-                onClick={handleClose}
-            >
-                <CloseIcon fontSize="small" />
-            </IconButton>
-        </React.Fragment>
-    );
 
 
     if (props.isAuth === true) {
@@ -107,7 +81,11 @@ const SignIn = (props) => {
                                 onBlur={() => setIsDirtyEmail(true)}
                             />
                             <label>Email</label>
-                            <span>{isDirtyEmail ? isEmailError : ''}</span>
+                            <span className={style.email_error}>{isDirtyEmail ? isEmailError : ''}</span>
+                            <span className={style.email_help}
+                                onClick={() => isHelp(!openHelp)}
+                            >?</span>
+                            <Help openHelp={openHelp}></Help>
                         </div>
                     </div>
                     {/* Класс не применялся, т.к. в CSS файле класс error был объявлен выше, чем класс password. Перенес error в конец CSS файла */}
@@ -134,16 +112,10 @@ const SignIn = (props) => {
                         <button
                             type="submit"
                             disabled={isDisabledButton}
-                            onClick={handleClick}
+                            onClick={() => setOpen(true)}
                         >LOGIN</button>
                     </div>
-                    <Snackbar
-                open={open}
-                autoHideDuration={6000}
-                onClose={handleClose}
-                message="Wrong login or password"
-                action={action}
-            />
+                    <SimpleSnackbar open={open} setOpen={setOpen}></SimpleSnackbar>
                 </form>
             </div>
         </div>

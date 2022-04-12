@@ -25,8 +25,9 @@ const HomePage = (props) => {
                 <div className={styles.avatar} onClick={() => openMenu(!isOpenMenu)}>
                     <span>{props.firstNameChar}</span>
                     <span>{props.firstSurnameChar}</span>
-                    <button className={isOpenMenu ? styles.btn : styles.noBtn} 
-                    onClick={() => props.onChangeAuth(false)}>Logout</button>
+                    <button className={isOpenMenu ? styles.btn : styles.noBtn}
+                        onClick={() => props.onChangeAuth(false)}
+                    >Logout</button>
                 </div>
             </header>
         </div>

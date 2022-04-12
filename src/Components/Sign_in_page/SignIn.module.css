@@ -64,7 +64,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.email span {
+.email_error {
     position: absolute;
     color: #F50057;
     left: 5px;
@@ -73,6 +73,22 @@
     line-height: 12px;
     text-align-last: left;
     font-family: 'Roboto', sans-serif;
+}
+
+.email_help{
+    position: absolute;
+    top: 44px;
+    right: -10px;
+    font-size: 12px;
+    line-height: 12px;
+    text-align-last: left;
+    font-family: 'Roboto', sans-serif;
+    color: #838b8d;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.email_help:hover{
+    color: #ff01c8;
 }
 
 .password {
