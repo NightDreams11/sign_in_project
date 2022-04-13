@@ -8,6 +8,7 @@ import SignIn from './Components/Sign_in_page/SignIn';
 function App() {
   const [isAuth, setIsAuth] = useState(false);
 
+
   const onChangeAuth = (isAuth) => {
     setIsAuth(isAuth)
   }

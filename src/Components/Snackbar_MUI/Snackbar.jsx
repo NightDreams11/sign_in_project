@@ -17,7 +17,7 @@ export default function SimpleSnackbar(props) {
     const action = (
         <React.Fragment>
             <Button color="secondary" size="small" onClick={handleClose}>
-                UNDO
+                Close
             </Button>
             <IconButton
                 size="small"
