@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Component_404 from './Components/404/404';
@@ -6,7 +6,18 @@ import HomePage from './Components/Home_Page/HomePage';
 import SignIn from './Components/Sign_in_page/SignIn';
 
 function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(
+    localStorage.getItem("isLoggedIn") === "false"
+  );
+  console.log(isAuth);
+
+  useEffect(() => {
+    setIsAuth(JSON.parse(window.localStorage.getItem('isAuth')));
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem('isAuth', isAuth);
+  }, [isAuth]);
 
 
   const onChangeAuth = (isAuth) => {
@@ -26,7 +37,7 @@ function App() {
     <div>
       <Routes>
         <Route
-          path='/login'
+          path='/sign_in_project'
           element={
             <SignIn
               onChangeAuth={onChangeAuth}
@@ -46,7 +57,7 @@ function App() {
           }>
         </Route>
         <Route
-          path='/'
+          path='*'
           element={<Component_404></Component_404>}
         ></Route>
       </Routes>

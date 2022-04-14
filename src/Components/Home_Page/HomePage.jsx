@@ -10,7 +10,7 @@ const HomePage = (props) => {
     }
 
     if (props.isAuth === false) {
-        return <Navigate to={"/login"}></Navigate>
+        return <Navigate to={"/sign_in_project"}></Navigate>
     }
 
     return (
