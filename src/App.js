@@ -7,7 +7,7 @@ import SignIn from './Components/Sign_in_page/SignIn';
 
 function App() {
   const [isAuth, setIsAuth] = useState(
-    localStorage.getItem("isLoggedIn") === "false"
+    localStorage.getItem("isAuth") === "false"
   );
   console.log(isAuth);
 
